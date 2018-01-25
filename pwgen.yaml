@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: pwgen-web-deployment
+  labels:
+    app: pwgen-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pwgen-web
+  template:
+    metadata:
+      labels:
+        app: pwgen-web
+    spec:
+      containers:
+      - name: pwgen-web
+        image: boris/pwgen-web
+        ports:
+        - containerPort: 80
