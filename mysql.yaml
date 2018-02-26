@@ -26,6 +26,8 @@ spec:
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
+        args:
+            - "--ignore-db-dir=lost+found"
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
