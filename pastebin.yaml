@@ -1,4 +1,18 @@
-apiVersion: apps/v1beta2
+apiVersion: v1
+kind: Service
+metadata:
+    name: pastebin-api
+    labels:
+        app: pastebin
+spec:
+    ports:
+        - port: 80
+    selector:
+        app: pastebin-api
+        tier: frontend
+    type: LoadBalancer
+---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
     name: pastebin
@@ -16,6 +30,14 @@ spec:
         spec:
             containers:
             - name: pastebin
-              image: boris/nginx-pastebin:latest
+              image: us.gcr.io/delta-chess-192822/pastebin:1.5
               ports:
                   - containerPort: 80
+              env:
+                  - name: DB_CONNECTION_STRING
+                    value: mysql+pymysql://pastebin:$PB_DB_PASSWORD@pastebin-mysql:3306/pastebin
+                  - name: PB_DB_PASSWORD
+                    valueFrom:
+                        secretKeyRef:
+                            name: pastebin-mysql-pass
+                            key: password
