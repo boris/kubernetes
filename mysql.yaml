@@ -33,3 +33,16 @@ spec:
         persistentVolumeClaim:
           claimName: mysql-pv-claim
 
+---
+apiVersion: apps:/v1beta2
+kind: Service
+metadata:
+    name: mysql-internal-lb
+    annotations:
+        cloud.google.com/load-balancer-type: "Internal"
+    app: mysql
+spec:
+    type: LoadBalancer
+    ports:
+        - port: 3306
+          protocol: tcp
