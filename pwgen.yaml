@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: pwgen
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pwgen
+        version: "1.4"
+        type: web
+    spec:
+      containers:
+        - name: pwgen
+          image: "boris/pwgen-web:1.4"
+          ports:
+          - containerPort: 5000
+apiVersion: v1
+kind: Service
+metadata:
+  name: pwgen
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 5000
+  selector:
+    app: pwgen
+
