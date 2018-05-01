@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/change-cause: "Update nginx to 1.12.2"
   creationTimestamp: null
   generation: 1
   labels:
@@ -10,7 +11,7 @@ metadata:
   name: nginx
   selfLink: /apis/extensions/v1beta1/namespaces/default/deployments/nginx
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       run: nginx
@@ -26,7 +27,7 @@ spec:
         run: nginx
     spec:
       containers:
-      - image: nginx:1.7.12
+      - image: nginx:1.12.2
         imagePullPolicy: IfNotPresent
         name: nginx
         resources: {}
