@@ -5,7 +5,7 @@ metadata:
     app: pwgen
   name: pwgen
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: pwgen
@@ -18,11 +18,15 @@ spec:
     metadata:
       labels:
         app: pwgen
+        version: "1.4"
+        type: web
     spec:
       containers:
       - image: boris/pwgen-web:1.4
         imagePullPolicy: IfNotPresent
         name: pwgen
         resources: {}
+        ports:
+        - containerPort: 5000
       dnsPolicy: ClusterFirst
       restartPolicy: Always
