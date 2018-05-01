@@ -4,8 +4,10 @@ metadata:
   labels:
     app: pwgen
   name: pwgen
+  annotations:
+    kubernetes.io/change-cause: "Reduce number of replicas"
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: pwgen
