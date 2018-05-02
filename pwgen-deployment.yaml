@@ -1,21 +1,3 @@
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:111285186890:certificate/9a70e729-49d4-4152-880a-74a13aa45d4b
-  name: pwgen
-  labels:
-    app: pwgen
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 443
-    targetPort: 5000
-    protocol: TCP
-    name: https
-  selector:
-    run: pwgen
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -23,7 +5,7 @@ metadata:
     app: pwgen
   name: pwgen
   annotations:
-    kubernetes.io/change-cause: "Reduce number of replicas"
+    kubernetes.io/change-cause: "Upgrade to 1.5"
 spec:
   replicas: 1
   selector:
@@ -42,7 +24,7 @@ spec:
         type: web
     spec:
       containers:
-      - image: boris/pwgen-web:1.4
+      - image: boris/pwgen-web:1.5
         imagePullPolicy: IfNotPresent
         name: pwgen
         resources: {}
