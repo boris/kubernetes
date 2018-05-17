@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: mysql
+  labels:
+    engine: mysql
+    kind: db
+    app: pastebin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      engine: mysql
+      kind: db
+      app: pastebin
+  template:
+    metadata:
+      labels:
+        engine: mysql
+        kind: db
+        app: pastebin
+    spec:
+      containers:
+      - name: database
+        image: mysql
+        resources:
+          requests:
+            cpu: 1
+            memory: 512Mi
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: supersecret
+        livenessProbe:
+          tcpSocket:
+            port: 3306
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+          - name: database
+            mountPath: "/var/lib/mysql"
+      volumes:
+      - name: database
+        awsElasticBlockStore:
+          volumeID: vol-0cbaeeea4aa9c909d
+          fsType: ext4
