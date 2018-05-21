@@ -1,34 +1,40 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: apps/v1beta1
+kind: StatefulSet
 metadata:
   labels:
     app: mongo
   name: mongo
-  annotations:
-    kubernetes.io/change-cause: "First deploy"
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mongo
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-    type: RollingUpdate
+  serviceName: "mongo"
+  replicas: 3
   template:
     metadata:
       labels:
         app: mongo
-        version: "1.4"
-        type: db
     spec:
       containers:
-      - image: mongo:3.7
-        imagePullPolicy: IfNotPresent
-        name: mongo
-        resources: {}
+      - name: mongo
+        image: mongo:3.4.1
+        command:
+        - mongod
+        - --replSet
+        - rs0
         ports:
-        - containerPort: 5000
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
+        - containerPort: 27017
+          name: peer
+        resources:
+          requests:
+            cpu: 0.1
+            memory: 64Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+spec:
+  ports:
+  - port: 27017
+    name: peer
+  clusterIP: None
+  selector:
+    app: mongo
