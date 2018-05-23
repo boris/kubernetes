@@ -2,15 +2,15 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: znc
-  name: znc
+    app: shout
+  name: shout
   annotations:
     kubernetes.io/change-cause: "Upgrade to 1.5"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: znc
+      app: shout
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -19,16 +19,16 @@ spec:
   template:
     metadata:
       labels:
-        app: znc
+        app: shout
         version: "1.1.7"
         type: irc
     spec:
       containers:
-      - image: boris/znc:latest
+      - image: lsiocommunity/shout-irc
         imagePullPolicy: IfNotPresent
         name: irc-bouncer
         resources: {}
         ports:
-        - containerPort: 31337
+        - containerPort: 9000
       dnsPolicy: ClusterFirst
       restartPolicy: Always
