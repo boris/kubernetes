@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unifi-controller-deployment
+  namespace: networking
+spec:
+  selector:
+    matchLabels:
+      app: unifi-controller
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: unifi-controller
+    spec:
+      containers:
+        - name: unifi-controller
+          image: linuxserver/unifi-controller:arm64v8-latest
+          ports:
+            - containerPort: 3478
+              protocol: UDP
+            - containerPort: 10001
+              protocol: UDP
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8081
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP
+            - containerPort: 8843
+              protocol: TCP
+            - containerPort: 8880
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: unifi-service
+  namespace: networking
+spec:
+  selector:
+    app: unifi-controller
+  type: NodePort
+  ports:
+    - port: 10000
+      name: udp3478
+      targetPort: 3478
+      nodePort: 30010
+    - port: 10001
+      name: udp10001
+      targetPort: 10001
+      nodePort: 30011
+    - port: 10002
+      name: tcp8080
+      targetPort: 8080
+      nodePort: 30012
+    - port: 10003
+      name: tcp8081
+      targetPort: 8081
+      nodePort: 30013
+    - port: 10004
+      name: tcp8443
+      targetPort: 8443
+      nodePort: 30014
+    - port: 10005
+      name: tcp8843
+      targetPort: 8843
+      nodePort: 30015
+    - port: 10006
+      name: tcp8880
+      targetPort: 8880
+      nodePort: 30016
