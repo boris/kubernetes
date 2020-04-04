@@ -83,6 +83,12 @@ data:
           target_label: __metrics_path__
           replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
 
+      - job_name: 'raspberry0'
+        scheme: http
+        static_config:
+          - targets: ['192.168.1.11:9100']
+        metrics_path: '/metrics'
+
       - job_name: 'kubernetes-service-endpoints'
         kubernetes_sd_configs:
         - role: endpoints
