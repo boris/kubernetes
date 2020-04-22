@@ -94,6 +94,7 @@ data:
         static_configs:
         - targets: ['192.168.1.12:9130']
         metrics_path: '/metrics'
+        scrape_interval: 30s
 
       - job_name: 'kubernetes-service-endpoints'
         kubernetes_sd_configs:
