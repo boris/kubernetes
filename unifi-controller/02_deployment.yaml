@@ -31,6 +31,10 @@ spec:
               protocol: TCP
             - containerPort: 8880
               protocol: TCP
+    volumes:
+      - name: unifi-storage
+        persistentVolumeClaim:
+          claimName: unifi-storage
 ---
 apiVersion: v1
 kind: Service
