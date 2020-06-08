@@ -31,6 +31,9 @@ spec:
               protocol: TCP
             - containerPort: 8880
               protocol: TCP
+          volumeMounts:
+            - name: unifi-storage
+              mountPath: /config
     volumes:
       - name: unifi-storage
         persistentVolumeClaim:
