@@ -102,6 +102,13 @@ data:
         metrics_path: '/metrics'
         scrape_interval: 30s
 
+      - job_name: 'pwgen-metrics'
+        scheme: http
+        static_configs:
+          - targets: ['pwgen.zsh.io']
+        metrics_path: '/metrics'
+        scrape_interval: 30s
+
       - job_name: 'kubernetes-service-endpoints'
         kubernetes_sd_configs:
         - role: endpoints
