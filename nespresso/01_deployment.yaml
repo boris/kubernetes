@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nespresso-deployment
+  namespace: iot
+spec:
+  selector:
+    matchLabels:
+      app: nespresso
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nespresso
+    spec:
+      containers:
+        - name: nespresso
+          image: boris/nespresso:0.2
+          ports:
+            - containerPort: 6789
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nespresso
+  namespace: iot
+spec:
+  selector:
+    app: nespresso
+  type: NodePort
+  ports:
+    - port: 6789
+      name: tcp6789
+      targetPort: 6789
+      nodePort: 6789

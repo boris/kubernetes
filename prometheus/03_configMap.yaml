@@ -109,6 +109,12 @@ data:
         metrics_path: '/metrics'
         scrape_interval: 30s
 
+      - job_name: 'nespresso'
+        scheme: http
+        static_configs:
+          - targets: ['192.168.1.11:30789']
+        metrics_path: '/metrics'
+
       - job_name: 'kubernetes-service-endpoints'
         kubernetes_sd_configs:
         - role: endpoints
