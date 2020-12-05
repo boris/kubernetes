@@ -100,12 +100,12 @@ data:
         static_configs:
         - targets: ['192.168.1.12:9130']
         metrics_path: '/metrics'
-        scrape_interval: 30s
+        scrape_interval: 60s
 
       - job_name: 'pwgen-metrics'
         scheme: http
         static_configs:
-          - targets: ['pwgen.zsh.io']
+          - targets: ['pwgen.btmn.dev']
         metrics_path: '/metrics'
         scrape_interval: 30s
 
