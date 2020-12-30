@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: unifi-controller
-          image: linuxserver/unifi-controller:version-6.0.41
+          image: linuxserver/unifi-controller:version-6.0.43
           ports:
             - containerPort: 3478
               protocol: UDP
