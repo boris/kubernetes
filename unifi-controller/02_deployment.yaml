@@ -34,10 +34,10 @@ spec:
           volumeMounts:
             - name: unifi-storage
               mountPath: /config
-    volumes:
-      - name: unifi-storage
-        persistentVolumeClaim:
-          claimName: unifi-storage
+      volumes:
+        - name: unifi-storage
+          persistentVolumeClaim:
+            claimName: unifi-storage
 ---
 apiVersion: v1
 kind: Service
