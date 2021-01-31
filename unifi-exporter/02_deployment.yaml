@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unifi-exporter
+  namespace: networking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unifi-exporter
+  template:
+    metadata:
+      labels:
+        app: unifi-exporter
+    spec:
+      containers:
+      - image: jessestuart/unifi_exporter:v0.4.0
+        name: unifi-exporter
+        command:
+        - /bin/unifi_exporter
+        args:
+        - "-config.file=/unifi_exporter/config.yaml"
+        ports:
+        - containerPort: 9130
+          name: metrics
+        volumeMounts:
+          - name: config
+            mountPath: /unifi_exporter/config.yaml
+            subPath: config.yaml
+      volumes:
+        - name: config
+          configMap:
+            name: unifi-exporter
+            items:
+            - key: config.yaml
+              path: config.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: unifi-exporter
+  namespace: networking
+spec:
+  selector:
+    app: unifi-exporter
+  type: NodePort
+  ports:
+    - port: 10007
+      name: tcp9130
+      targetPort: 9130
+      nodePort: 30130

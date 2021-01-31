@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: unifi-exporter
+  namespace: networking
+data:
+  config.yaml: |
+    listen:
+      address: :9130
+      metricspath: /metrics
+    unifi:
+      address: https://a.b.c.d
+      username: user
+      password: passwd
+      site: Default
+      insecure: true
+      timeout: 5s
