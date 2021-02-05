@@ -104,9 +104,8 @@ data:
       - job_name: 'unifi-exporter'
         scheme: http
         static_configs:
-        - targets: ['192.168.1.12:9130']
+        - targets: ['192.168.1.11:30130']
         metrics_path: '/metrics'
-        scrape_interval: 60s
 
       - job_name: 'pwgen-metrics'
         scheme: http
