@@ -83,24 +83,6 @@ data:
           target_label: __metrics_path__
           replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
 
-      - job_name: 'raspberry0'
-        scheme: http
-        static_configs:
-        - targets: ['192.168.1.11:9100']
-        metrics_path: '/metrics'
-
-      - job_name: 'raspberry1'
-        scheme: http
-        static_configs:
-        - targets: ['192.168.1.12:9100']
-        metrics_path: '/metrics'
-
-      - job_name: 'raspberry2'
-        scheme: http
-        static_configs:
-        - targets: ['192.168.1.13:9100']
-        metrics_path: '/metrics'
-
       - job_name: 'unifi-exporter'
         scheme: http
         static_configs:
