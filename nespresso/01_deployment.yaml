@@ -28,7 +28,7 @@ metadata:
 spec:
   selector:
     app: nespresso
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 6789
       name: tcp6789
