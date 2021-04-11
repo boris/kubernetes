@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: prometheus
-          image: prom/prometheus:v2.2.1
+          image: prom/prometheus:v2.26.0
           args:
             - "--config.file=/etc/prometheus/prometheus.yml"
             - "--storage.tsdb.path=/prometheus/"
@@ -47,7 +47,7 @@ metadata:
 spec:
   selector:
     app: prometheus-server
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 8080
       targetPort: 9090
