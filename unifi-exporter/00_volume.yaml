@@ -1,10 +1,26 @@
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: unifi-exporter
+  labels:
+    type: nfs
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: /nfs
+    server: 192.168.1.12
+  persistentVolumeReclaimPolicy: Recycle
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: unifi-exporter
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi

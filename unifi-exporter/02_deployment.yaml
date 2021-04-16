@@ -43,7 +43,7 @@ metadata:
 spec:
   selector:
     app: unifi-exporter
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 10007
       name: tcp9130
