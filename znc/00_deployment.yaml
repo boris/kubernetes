@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: znc
+  namespace: networking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: znc
+  template:
+    spec:
+      containers:
+      - image: boris/znc:0.1
+        name: znc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: znc
+  namespace: networking
+spec:
+  selector:
+    app: znc
+  type: LoadBalancer
+  ports:
+    - port: 31337
+      name: tcp31337
+      targetPort: 31337
+      nodePort: 31337
