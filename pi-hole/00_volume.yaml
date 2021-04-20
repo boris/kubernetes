@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pihole-storage
+  labels:
+    directory: etc
+    type: nfs
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /nfs
+    server: 192.168.1.12
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pihole-storage
+  namespace: networking
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
