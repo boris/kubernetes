@@ -96,10 +96,10 @@ data:
         metrics_path: '/metrics'
         scrape_interval: 30s
 
-      - job_name: 'nespresso'
+      - job_name: 'bitcoin-stats'
         scheme: http
         static_configs:
-          - targets: ['192.168.1.11:30789']
+          - targets: ['192.168.1.11:30051']
         metrics_path: '/metrics'
 
       - job_name: 'kubernetes-service-endpoints'
