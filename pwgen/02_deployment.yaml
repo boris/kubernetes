@@ -1,16 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  labels:
-    app: pwgen
   name: pwgen
-  annotations:
-    kubernetes.io/change-cause: "Upgrade to 1.5"
+  namespace: public-api
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: pwgen
+  replicas: 1
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -20,11 +17,11 @@ spec:
     metadata:
       labels:
         app: pwgen
-        version: "1.4"
+        version: "1.7"
         type: web
     spec:
       containers:
-      - image: boris/pwgen-web:1.5
+      - image: boris/pwgen-web:1.7
         imagePullPolicy: IfNotPresent
         name: pwgen
         resources: {}
@@ -32,3 +29,4 @@ spec:
         - containerPort: 5000
       dnsPolicy: ClusterFirst
       restartPolicy: Always
+
