@@ -18,5 +18,5 @@ spec:
             - tunnel
             - run
             - "--token"
-            - <THE_TOKEN>
+            - eyJhIjoiZDgxNTAzZjdmYzFlOGJhY2Y2NjUwNDdlODdhYjAxNTUiLCJ0IjoiMDJkN2RlZjctOWE1MC00OWYzLThkM2UtNTVhZWU1M2IyZGYzIiwicyI6IlpEWmxPREZqTWpRdE5URXpaQzAwTm1ZM0xXRXdNamt0WTJZNU1UWTVPRFppTlRKaCJ9
 
