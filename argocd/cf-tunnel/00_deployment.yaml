@@ -22,7 +22,7 @@ spec:
           env:
             - name: CF_TOKEN
               valueFrom:
-                secretKeyref:
+                secretKeyRef:
                   name: cf-tunnel-token
                   key: token
 
