@@ -18,5 +18,11 @@ spec:
             - tunnel
             - run
             - "--token"
-            - <THE_TOKEN>
+            - $CF_TOKEN
+          env:
+            - name: CF_TOKEN
+              valueFrom:
+                secretKeyref:
+                  name: cf-tunnel-token
+                  key: token
 
