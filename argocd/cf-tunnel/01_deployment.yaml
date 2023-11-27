@@ -14,15 +14,15 @@ spec:
       containers:
         - name: cf-tunnel
           image: cloudflare/cloudflared
-          args:
-            - tunnel
-            - run
-            - "--token"
-            - $CF_TOKEN
           env:
             - name: CF_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: cf-tunnel-token
                   key: token
+          args:
+            - tunnel
+            - run
+            - "--token"
+            - eyJhIjoiZDgxNTAzZjdmYzFlOGJhY2Y2NjUwNDdlODdhYjAxNTUiLCJ0IjoiMDJkN2RlZjctOWE1MC00OWYzLThkM2UtNTVhZWU1M2IyZGYzIiwicyI6Ik16Z3dOREV6WVRFdE1qRXdaQzAwTTJFM0xUZzBNR1V0TWpBMllUY3lOR1U0TnpjMyJ9
 
