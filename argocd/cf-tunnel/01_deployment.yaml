@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cf-tunnel-test
+spec:
+  selector:
+    matchLabels:
+      app: cf-tunnel
+  template:
+    metadata:
+      labels:
+        app: cf-tunnel
+    spec:
+      containers:
+        - name: cf-tunnel
+          image: cloudflare/cloudflared
+          env:
+            - name: CF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cf-tunnel-token
+                  key: token
+          args:
+            - tunnel
+            - run
+            - "--token"
+            - eyJhIjoiZDgxNTAzZjdmYzFlOGJhY2Y2NjUwNDdlODdhYjAxNTUiLCJ0IjoiMDJkN2RlZjctOWE1MC00OWYzLThkM2UtNTVhZWU1M2IyZGYzIiwicyI6Ik16Z3dOREV6WVRFdE1qRXdaQzAwTTJFM0xUZzBNR1V0TWpBMllUY3lOR1U0TnpjMyJ9
+

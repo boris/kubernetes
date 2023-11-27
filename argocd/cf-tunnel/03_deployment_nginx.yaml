@@ -20,6 +20,12 @@ spec:
           - name: nginx-config
             mountPath: /etc/nginx/nginx.conf
             subPath: nginx.conf
+          env:
+            - name: CF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cf-tunnel-token
+                  key: token
       volumes:
         - name: nginx-config
           configMap:
