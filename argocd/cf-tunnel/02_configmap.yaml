@@ -40,4 +40,4 @@ kind: Secret
 metadata:
   name: cf-tunnel-token
 data:
-  token: eyJhIjoiZDgxNTAzZjdmYzFlOGJhY2Y2NjUwNDdlODdhYjAxNTUiLCJ0IjoiMDJkN2RlZjctOWE1MC00OWYzLThkM2UtNTVhZWU1M2IyZGYzIiwicyI6Ik16Z3dOREV6WVRFdE1qRXdaQzAwTTJFM0xUZzBNR1V0TWpBMllUY3lOR1U0TnpjMyJ9
+  token: TBD
