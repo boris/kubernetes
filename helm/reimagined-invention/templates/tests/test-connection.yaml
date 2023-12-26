@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "reimagined-invention.fullname" . }}-test-connection"
+  labels:
+    {{- include "reimagined-invention.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "reimagined-invention.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
