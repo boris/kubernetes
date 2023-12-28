@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pastebin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pastebin
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: pastebin
+        version: "1.9"
+        type: web
+    spec:
+      containers:
+        - name: cf-tunnel
+          image: cloudflare/cloudflared
+          env:
+            - name: CF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cf-tunnel-token-pastebin
+                  key: token
+          args:
+            - tunnel
+            - run
+            - --token
+            - $(CF_TOKEN)
+        - name: pastebin
+          image: boris/somepastebin:1.9
+          ports:
+          - containerPort: 5000
+          env:
+            - name: DB_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: pastebin-db-connection-string
+                  key: password
