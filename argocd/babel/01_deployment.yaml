@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: babel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: babel
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: babel
+        version: "1.9"
+        type: web
+    spec:
+      containers:
+        - name: cf-tunnel
+          image: cloudflare/cloudflared
+          env:
+            - name: CF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cf-tunnel-token-babel
+                  key: token
+          args:
+            - tunnel
+            - run
+            - --token
+            - $(CF_TOKEN)
+        - name: babel
+          image: boris/babel:0.10.3
+          ports:
+          - containerPort: 8080
+          command: ["/bin/sh"]
+          args: [
+            "-c",
+            "env DISABLE_SPRING=true bundle exec rails db:migrate && bundle exec rake assets:precompile && bundle exec rails server -b 0.0.0.0 --port 8080"
+          ]
+          env:
+            - name: DBHOST
+              valueFrom:
+                secretKeyRef:
+                  name: babel-dbhost
+                  key: dbhost
+            - name: DBNAME
+              valueFrom:
+                secretKeyRef:
+                  name: babel-dbname
+                  key: dbname
+            - name: DBUSER
+              valueFrom:
+                secretKeyRef:
+                  name: babel-dbuser
+                  key: dbuser
+            - name: APP_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: babel-dbpassword
+                  key: dbpassword
+            - name: RAILS_ENV
+              value: production
+            - name: SECRET_KEY_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: babel-secret-key
+                  key: secret-key
