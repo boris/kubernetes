@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reimagined-invention
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reimagined-invention
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: reimagined-invention
+        version: "0.6.0"
+        type: web
+    spec:
+      volumes:
+        - name: reimagined-invention-data
+          secret:
+            secretName: reimagined-invention-config
+      containers:
+        - name: cf-tunnel
+          image: cloudflare/cloudflared
+          env:
+            - name: CF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cf-tunnel-token-reimagined-invention
+                  key: token
+          args:
+            - tunnel
+            - run
+            - --token
+            - $(CF_TOKEN)
+        - name: reimagined-invention
+          image: 111285186890.dkr.ecr.us-east-1.amazonaws.com/reimagined-invention:0.6.0
+          ports:
+          - containerPort: 5000
+          command: ["/bin/bash"]
+          args: [
+            "-c",
+            "make db-upgrade && make run"
+          ]
+          volumeMounts:
+            - name: reimagined-invention-data
+              readOnly: true
+              mountPath: "/local"
