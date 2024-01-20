@@ -38,7 +38,7 @@ spec:
             - --token
             - $(CF_TOKEN)
         - name: reimagined-invention
-          image: 111285186890.dkr.ecr.us-east-1.amazonaws.com/reimagined-invention:0.6.1-pre
+          image: 111285186890.dkr.ecr.us-east-1.amazonaws.com/reimagined-invention:0.6.1
           ports:
           - containerPort: 5000
           command: ["/bin/bash"]
