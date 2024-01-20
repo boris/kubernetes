@@ -16,7 +16,7 @@ spec:
     metadata:
       labels:
         app: reimagined-invention
-        version: "0.6.1-pre"
+        version: "0.6.1"
         type: web
     spec:
       volumes:
