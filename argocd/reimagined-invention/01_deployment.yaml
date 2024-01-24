@@ -44,7 +44,7 @@ spec:
           command: ["/bin/bash"]
           args: [
             "-c",
-            "rm -rf migrations && make db-init &&  make db-migrate && make db-upgrade && make run"
+            "make db-migrate && make db-upgrade && make run"
           ]
           volumeMounts:
             - name: reimagined-invention-data
