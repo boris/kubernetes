@@ -16,7 +16,7 @@ spec:
     metadata:
       labels:
         app: reimagined-invention
-        version: "0.6.2"
+        version: "0.6.3-pre1"
         type: web
     spec:
       volumes:
@@ -38,13 +38,13 @@ spec:
             - --token
             - $(CF_TOKEN)
         - name: reimagined-invention
-          image: 111285186890.dkr.ecr.us-east-1.amazonaws.com/reimagined-invention:0.6.2
+          image: 111285186890.dkr.ecr.us-east-1.amazonaws.com/reimagined-invention:0.6.3-pre1
           ports:
           - containerPort: 5000
           command: ["/bin/bash"]
           args: [
             "-c",
-            "make db-upgrade && make run"
+            "make db-init && make db-migrate && make db-upgrade && make run"
           ]
           volumeMounts:
             - name: reimagined-invention-data
