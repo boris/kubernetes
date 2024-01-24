@@ -16,7 +16,7 @@ spec:
     metadata:
       labels:
         app: reimagined-invention
-        version: "0.6.1"
+        version: "0.6.2"
         type: web
     spec:
       volumes:
@@ -38,7 +38,7 @@ spec:
             - --token
             - $(CF_TOKEN)
         - name: reimagined-invention
-          image: 111285186890.dkr.ecr.us-east-1.amazonaws.com/reimagined-invention:0.6.1
+          image: 111285186890.dkr.ecr.us-east-1.amazonaws.com/reimagined-invention:0.6.2
           ports:
           - containerPort: 5000
           command: ["/bin/bash"]
