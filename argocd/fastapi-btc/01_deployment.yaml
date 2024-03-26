@@ -34,6 +34,6 @@ spec:
             - --token
             - $(CF_TOKEN)
         - name: fastapi-btc
-          image: 111285186890.dkr.ecr.us-east-1.amazonaws.com/fastapi-btc-calc:4535c2d
+          image: 111285186890.dkr.ecr.us-east-1.amazonaws.com/fastapi-btc-calc:0907b10
           ports:
           - containerPort: 9000
