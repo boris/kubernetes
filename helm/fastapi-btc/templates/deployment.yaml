@@ -49,6 +49,21 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+        {{- if .cfTokenSecret }}
+        - name: cf-tunnel
+          image: cloudflare/cloudflared
+          args:
+            - tunnel
+            - run
+            - --token
+            - $(CF_TOKEN)
+          env:
+            - name: CF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .cfTokenSecret.name }}
+                  key: {{ .cfTokenSecret.key }}
+        {{- end }}
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
