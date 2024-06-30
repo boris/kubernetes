@@ -3,7 +3,18 @@ entries:
   fastapi-btc:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-06-29T09:19:30.621954015-04:00"
+    created: "2024-06-29T22:20:32.687722733-04:00"
+    description: An API to calculate the amount of BTC each person bought based on
+      the total amount of BTC bought and the amount of money each person spent.
+    digest: 3f2a9c585878033c9e443f91897e9dfeae363cf8f4e1646653f94587d40e824c
+    name: fastapi-btc
+    type: application
+    urls:
+    - https://boris.github.io/kubernetes/helm/charts/fastapi-btc-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-06-29T22:20:32.687370969-04:00"
     description: An API to calculate the amount of BTC each person bought based on
       the total amount of BTC bought and the amount of money each person spent.
     digest: 67be51a43ba121595975d2ddfe50a8b0abc7101c8609f303c4dc03dfde39421f
@@ -12,4 +23,4 @@ entries:
     urls:
     - https://boris.github.io/kubernetes/helm/charts/fastapi-btc-0.1.1.tgz
     version: 0.1.1
-generated: "2024-06-29T09:19:30.621580368-04:00"
+generated: "2024-06-29T22:20:32.68703658-04:00"
