@@ -1,9 +1,20 @@
 apiVersion: v1
 entries:
+  eth-explorer:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-09-05T07:02:10.456226624-04:00"
+    description: A Helm chart for Kubernetes
+    digest: 3c7b6b4f8eca0caad81adcf68ec2f0a4a9dfe0669073b7b819f70764ec895063
+    name: eth-explorer
+    type: application
+    urls:
+    - https://boris.github.io/kubernetes/helm/charts/eth-explorer-0.1.0.tgz
+    version: 0.1.0
   fastapi-btc:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-06-29T22:20:32.687722733-04:00"
+    created: "2024-09-05T07:02:10.465834123-04:00"
     description: An API to calculate the amount of BTC each person bought based on
       the total amount of BTC bought and the amount of money each person spent.
     digest: 3f2a9c585878033c9e443f91897e9dfeae363cf8f4e1646653f94587d40e824c
@@ -14,7 +25,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-06-29T22:20:32.687370969-04:00"
+    created: "2024-09-05T07:02:10.465412185-04:00"
     description: An API to calculate the amount of BTC each person bought based on
       the total amount of BTC bought and the amount of money each person spent.
     digest: 67be51a43ba121595975d2ddfe50a8b0abc7101c8609f303c4dc03dfde39421f
@@ -23,4 +34,4 @@ entries:
     urls:
     - https://boris.github.io/kubernetes/helm/charts/fastapi-btc-0.1.1.tgz
     version: 0.1.1
-generated: "2024-06-29T22:20:32.68703658-04:00"
+generated: "2024-09-05T07:02:10.455861811-04:00"
