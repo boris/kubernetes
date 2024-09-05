@@ -49,6 +49,14 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+          {{- if .Values.infuraAPIKey }}
+          env:
+            - name: INFURA_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.infuraAPIKey.name }}
+                  key: {{ .Values.infuraAPIKey.key }}
+          {{- end }}
         {{- if .Values.cfTokenSecret }}
         - name: cf-tunnel
           image: cloudflare/cloudflared
