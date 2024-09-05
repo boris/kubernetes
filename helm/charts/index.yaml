@@ -3,28 +3,18 @@ entries:
   eth-explorer:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-09-05T07:14:39.866010335-04:00"
+    created: "2024-09-05T12:23:39.743710436-04:00"
     description: A Helm chart for Kubernetes
-    digest: 7d201e5c4071bbaad6642bbf063e7d01b2cd61edd8934d8f2a149320a1d73e25
+    digest: 7e7b9de2c5328eed3b92c40240c468ce5d5a0a51ffaf02cede4b1e485612a66e
     name: eth-explorer
     type: application
     urls:
-    - https://boris.github.io/kubernetes/helm/charts/eth-explorer-0.1.1.tgz
-    version: 0.1.1
-  - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2024-09-05T07:14:39.86579979-04:00"
-    description: A Helm chart for Kubernetes
-    digest: 3c7b6b4f8eca0caad81adcf68ec2f0a4a9dfe0669073b7b819f70764ec895063
-    name: eth-explorer
-    type: application
-    urls:
-    - https://boris.github.io/kubernetes/helm/charts/eth-explorer-0.1.0.tgz
-    version: 0.1.0
+    - https://boris.github.io/kubernetes/helm/charts/eth-explorer-0.1.2.tgz
+    version: 0.1.2
   fastapi-btc:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-09-05T07:14:39.866400555-04:00"
+    created: "2024-09-05T12:23:39.743940066-04:00"
     description: An API to calculate the amount of BTC each person bought based on
       the total amount of BTC bought and the amount of money each person spent.
     digest: 3f2a9c585878033c9e443f91897e9dfeae363cf8f4e1646653f94587d40e824c
@@ -33,15 +23,4 @@ entries:
     urls:
     - https://boris.github.io/kubernetes/helm/charts/fastapi-btc-0.1.2.tgz
     version: 0.1.2
-  - apiVersion: v2
-    appVersion: 1.0.0
-    created: "2024-09-05T07:14:39.866225174-04:00"
-    description: An API to calculate the amount of BTC each person bought based on
-      the total amount of BTC bought and the amount of money each person spent.
-    digest: 67be51a43ba121595975d2ddfe50a8b0abc7101c8609f303c4dc03dfde39421f
-    name: fastapi-btc
-    type: application
-    urls:
-    - https://boris.github.io/kubernetes/helm/charts/fastapi-btc-0.1.1.tgz
-    version: 0.1.1
-generated: "2024-09-05T07:14:39.865471867-04:00"
+generated: "2024-09-05T12:23:39.743336943-04:00"

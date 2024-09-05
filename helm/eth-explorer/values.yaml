@@ -9,6 +9,10 @@ cfTokenSecret:
   name: cf-tunnel-eth-explorer
   key: token
 
+infuraAPIKey:
+  name: eth-explorer-infura
+  key: api-key
+
 service: 
   type: NodePort
   port: 5000
