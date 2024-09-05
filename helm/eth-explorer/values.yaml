@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: 111285186890.dkr.ecr.us-east-1.amazonaws.com/eth-explorer
   pullPolicy: IfNotPresent
-  tag: c0cd8f2
+  tag: 3769803
 
 cfTokenSecret:
   name: cf-tunnel-eth-explorer
