@@ -10,7 +10,7 @@ cfTokenSecret:
   key: token
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 8000
 
 livenessProbe:
