@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: pastebin
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: pastebin
   ports:
