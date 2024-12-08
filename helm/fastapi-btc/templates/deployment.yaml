@@ -67,7 +67,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.telegramTokenSecret.name }}
-                  key: {{ .Values.telegramTokenKey }}
+                  key: {{ .Values.telegramToken.key }}
         {{- end }}
       {{- with .Values.volumes }}
       volumes:
