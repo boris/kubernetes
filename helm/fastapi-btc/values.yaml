@@ -9,6 +9,10 @@ cfTokenSecret:
   name: cf-tunnel-token-fastapi-btc
   key: token
 
+telegramTokenSecret:
+  name: telegram-token-fastapi-btc
+  key: token
+
 service:
   type: ClusterIP
   port: 8000
