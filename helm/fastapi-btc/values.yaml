@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: 111285186890.dkr.ecr.us-east-1.amazonaws.com/fastapi-btc-calc
   pullPolicy: IfNotPresent
-  tag: d53bd67
+  tag: f47ed35
 
 cfTokenSecret:
   name: cf-tunnel-token-fastapi-btc
