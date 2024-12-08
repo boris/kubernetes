@@ -63,6 +63,11 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.cfTokenSecret.name }}
                   key: {{ .Values.cfTokenSecret.key }}
+            - name: TELEGRAM_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.telegramTokenSecret.name }}
+                  key: {{ .Values.telegramTokenKey }}
         {{- end }}
       {{- with .Values.volumes }}
       volumes:

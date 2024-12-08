@@ -3,7 +3,7 @@ entries:
   eth-explorer:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-12-08T01:21:20.095537863-03:00"
+    created: "2024-12-08T01:25:41.589172673-03:00"
     description: A Helm chart for Kubernetes
     digest: ee1df2c9883397d051f5f956fe3fa612612cb4d810c0ec8b7eb810157e2e67d9
     name: eth-explorer
@@ -13,7 +13,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-12-08T01:21:20.094594145-03:00"
+    created: "2024-12-08T01:25:41.588816728-03:00"
     description: A Helm chart for Kubernetes
     digest: 92994fe87dffe9cac12f199106ffaddf8e879ceb7be661b566070f2e8c0fd946
     name: eth-explorer
@@ -23,7 +23,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-12-08T01:21:20.093261263-03:00"
+    created: "2024-12-08T01:25:41.588396098-03:00"
     description: A Helm chart for Kubernetes
     digest: 707ccff0c9ded71ebcccd263e11277ab141ea4449d59395feb381090f4ebd507
     name: eth-explorer
@@ -34,18 +34,18 @@ entries:
   fastapi-btc:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-12-08T01:21:20.096829925-03:00"
+    created: "2024-12-08T01:25:41.589905048-03:00"
     description: An API to calculate the amount of BTC each person bought based on
       the total amount of BTC bought and the amount of money each person spent.
-    digest: fdf5607cfaae0b7a393989875661b6fa6fe54f1faf0bb5f6d32397adbfeebc03
+    digest: 8e131e684db4cdad54a4a06475fefc0052515e5347fc49398102f6157aa67dfd
     name: fastapi-btc
     type: application
     urls:
-    - https://boris.github.io/kubernetes/helm/charts/fastapi-btc-0.2.0.tgz
-    version: 0.2.0
+    - https://boris.github.io/kubernetes/helm/charts/fastapi-btc-0.2.1.tgz
+    version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-12-08T01:21:20.096201467-03:00"
+    created: "2024-12-08T01:25:41.589554496-03:00"
     description: An API to calculate the amount of BTC each person bought based on
       the total amount of BTC bought and the amount of money each person spent.
     digest: 1a52b9da1666fe06df55657ea9d71bb3f862fcf109e8b2dede5ed56967d33c3b
@@ -54,4 +54,4 @@ entries:
     urls:
     - https://boris.github.io/kubernetes/helm/charts/fastapi-btc-0.1.2.tgz
     version: 0.1.2
-generated: "2024-12-08T01:21:20.083165514-03:00"
+generated: "2024-12-08T01:25:41.587779863-03:00"
